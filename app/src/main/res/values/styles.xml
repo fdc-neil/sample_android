@@ -1,0 +1,220 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/blueGreen</item>
+    </style>
+
+
+    <style name="CustomDialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!--  <style name="DialogAnimation">
+          <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+          <item name="android:windowExitAnimation">@anim/slide_down_dialog</item>
+      </style>
+
+      <style name="DialogAnimationDown">
+          <item name="android:windowEnterAnimation">@anim/slide_down_from_up_dialog</item>
+          <item name="android:windowExitAnimation">@anim/slide_up_from_down_dialog</item>
+      </style>
+
+      <style name="DialogAnimationLeft">
+          <item name="android:windowEnterAnimation">@anim/slide_left</item>
+          <item name="android:windowExitAnimation">@anim/slide_right</item>
+      </style>
+
+      <style name="DialogAnimationRight">
+          <item name="android:windowEnterAnimation">@anim/slide_right</item>
+          <item name="android:windowExitAnimation">@anim/slide_left</item>
+      </style>
+  -->
+    <style name="CustomDialogFull" parent="android:Theme.Dialog">
+        <!-- Fill the screen -->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <!--<item name="android:windowAnimationStyle">@style/DialogAnimation</item>-->
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <!-- Custom dialog Full Screen -->
+    <style name="custom_dialog_full" parent="android:Theme.Dialog">
+        <!-- Fill the screen -->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="custom_dialog_dim_fill" parent="android:Theme.Dialog">
+        <!-- Fill the screen -->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Your AppTheme or other themes/styles here -->
+
+    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <!--<style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>-->
+
+    <!-- Custom Title bar -->
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">15dp</item>
+        <item name="colorAccent">@color/blueGreen</item>
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+        <item name="android:windowTitleSize">?attr/actionBarSize</item>
+    </style>
+
+    <!-- Custom Title bar -->
+    <style name="CustomTitleBar" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">15dp</item>
+        <item name="colorAccent">@color/blueGreen</item>
+        <item name="colorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="txtErrorBox">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- LOGIN -->
+    <style name="btnLogin">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="btnTop">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="btnTopInfo">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!-- Window Style for Custom Title bar -->
+    <style name="WindowTitleBackground">
+        <item name="android:padding">0px</item>
+    </style>
+
+    <style name="btnStyle">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- Text Style -->
+    <style name="limit_text_style">
+        <item name="android:maxEms">10</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="myPage">
+        <item name="android:gravity">center_vertical|center_horizontal|center</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <!-- Tab Style -->
+    <!-- <style name="tab_text_style" parent="TextAppearance.Design.Tab">
+         <item name="android:textSize">16sp</item>
+         <item name="android:textStyle">bold</item>
+     </style>-->
+
+    <style name="profile_register_tv_rule">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="profile_register_et">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="custom_dialog_dim" parent="android:Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="transparent_no_actionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!--  <style name="tabLayoutTextBold" parent="TextAppearance.Design.Tab">
+          <item name="android:textStyle">bold</item>
+      </style>
+
+      &lt;!&ndash; InboxMessageFragment &ndash;&gt;
+      <style name="sentTime">
+          <item name="android:layout_marginRight">5dp</item>
+          <item name="android:textColor">@color/gray</item>
+          <item name="android:layout_alignBottom">@+id/message_container</item>
+      </style>
+
+      <style name="AppTheme.Launcher.NoActionBar">
+          <item name="windowActionBar">false</item>
+          <item name="windowNoTitle">true</item>
+      </style>-->
+
+    <style name="AppTheme.Launcher.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.Launcher.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">#444444</item>
+    </style>
+
+    <!-- TAB -->
+    <style name="tab_layout_text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

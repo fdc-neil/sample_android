@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_1"
+
+    tools:context=".ProfileDetailsRegistrationActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_field"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/required"
+                    android:gravity="start|center_horizontal"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    />
+
+                <EditText
+                    android:id="@+id/etPDRNickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nickname"
+                    android:layout_gravity="start|center"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:textColorHint="@color/gray"
+                    android:textColor="@color/black"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_field"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/any"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    />
+
+                <EditText
+                    android:id="@+id/etPDRAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/age_registration"
+                    android:layout_gravity="start|center"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:background="@null"/>
+
+
+                <ImageView
+                    android:id="@+id/dropdown1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/arrow_down"
+                    android:contentDescription="@string/ivArrowDown"
+                    android:clickable="false"
+                    android:layout_weight="0.01"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_field"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/any"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    />
+
+                <EditText
+                    android:id="@+id/etPDRPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/area_registration"
+                    android:layout_gravity="start|center"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"
+                    android:layout_weight="0.4"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:id="@+id/dropdown2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/arrow_down"
+                    android:clickable="false"
+                    android:layout_weight="0.01"
+                    android:layout_marginStart="50dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_field"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/any"
+                    android:layout_gravity="start|center"
+                    android:gravity="start"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    />
+
+                <EditText
+                    android:id="@+id/etPDROccupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/work_registration"
+                    android:layout_gravity="start|center"
+                    android:background="@null"
+                    android:textColorHint="@color/gray"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.4"
+                    />
+
+                <ImageView
+                    android:id="@+id/dropdown3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/arrow_down"
+                    android:clickable="false"
+                    android:layout_weight="0.01"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_field"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_margin="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/any"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/black"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvCountCharacters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"/>
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="190dp"
+                    android:clickable="false"
+                    android:singleLine="true"
+                    android:gravity="top|start"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="12dp"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:textSize="17dp"
+                    android:id="@+id/etIntroduction"
+                    android:textColorHint="@color/gray"
+                    android:hint="@string/introduction"
+                    style="@style/profile_register_et"
+                    android:textColor="@color/black"
+                    android:maxLength="255"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:background="@drawable/bg_login_gray_button"
+                android:textAllCaps="false"
+                android:enabled="false"
+                android:layout_gravity="center"
+                android:id="@+id/btnSubmit"
+                android:textColor="@color/black"
+                android:layout_margin="15dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

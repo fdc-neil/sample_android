@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp"
+    tools:context=".ProfileImageDescriptionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/relativeLayout8">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/registration_profile"
+                    android:id="@+id/textView27"
+                    android:textColor="@color/black"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:lineSpacingMultiplier="1.3"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/relativeLayout8"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_performance_history"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/registration_profile_photo"
+                    android:id="@+id/textView28"
+                    android:textColor="@color/black"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/registration_profile_about"
+                    android:id="@+id/textView29"
+                    android:layout_below="@+id/textView28"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingMultiplier="1.3"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/imageView3"
+                    android:layout_below="@+id/textView29"
+                    android:layout_alignStart="@+id/textView29"
+                    android:src="@drawable/img_increase_attention"
+                    android:layout_marginTop="10dp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:id="@+id/imageView4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/img_not_popular"
+                    android:layout_below="@+id/imageView3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/registration_profile_note"
+                    android:id="@+id/textView30"
+                    android:layout_below="@+id/imageView4"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:lineSpacingMultiplier="1.3"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/rl_error_msg"
+                style="@style/txtErrorBox"
+                android:paddingLeft="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_error_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/registration_profile_error"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/holo_red_dark" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_image_prof">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgTopPic"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    fresco:roundAsCircle="true"
+                    fresco:progressBarImage="@drawable/img_loading"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    fresco:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/thumbnail"
+                    fresco:roundedCornerRadius="50dp"
+                    fresco:failureImage="@drawable/thumbnail"/>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/imgAdd"
+                    android:src="@drawable/plus"
+                    android:layout_alignBottom="@+id/imgTopPic"
+                    android:layout_alignEnd="@+id/imgTopPic" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/title_image_registration"
+                    android:id="@+id/textView31"
+                    android:layout_below="@+id/imgTopPic"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp" />
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnLogin"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/bg_login_gray_button"
+                    android:text="@string/confirm_next"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_below="@id/textView31"
+                    android:stateListAnimator="@null"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
