@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "104348112744",
+    "firebase_url": "https://machevaratalk-android.firebaseio.com",
+    "project_id": "machevaratalk-android",
+    "storage_bucket": "machevaratalk-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104348112744:android:1d9f59e6b20372e2",
+        "android_client_info": {
+          "package_name": "com.fdc_machetalk_broadcaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104348112744-cklffbecbmv3kt7im40t2gfamvgg1b4f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fdc_machetalk_broadcaster",
+            "certificate_hash": "3c4e65c9f695a47ca61b6f576808c536f595b473"
+          }
+        },
+        {
+          "client_id": "104348112744-avb9n77743ng8n6r9ud6oapm1s5dkesp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcyLcEufEToEOuhbro6bPbfzm1KGqOzbg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104348112744-avb9n77743ng8n6r9ud6oapm1s5dkesp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

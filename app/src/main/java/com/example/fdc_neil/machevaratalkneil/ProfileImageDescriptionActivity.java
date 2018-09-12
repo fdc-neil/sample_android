@@ -2,6 +2,7 @@ package com.example.fdc_neil.machevaratalkneil;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Shader;
+import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -30,6 +32,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fdc_neil.machevaratalkneil.Network.ImageUploadTask;
+import com.example.fdc_neil.machevaratalkneil.Network.NetworkHelper;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import org.json.JSONException;
@@ -59,6 +63,7 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
     String random_profile_image_url, email, password;
     File finalFile = null;
     Uri selectedImageUri = null;
+    Bitmap bitmap;
 
     public static final String PROFILE_IMAGE_URL = "http://pre-macherie.stg.inn.inmgt.com/mobile_api/broadcaster/register/profile_image";
     private static RequestQueue mQueue;
@@ -91,11 +96,38 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
             btnSubmit.setBackgroundResource(R.drawable.bg_button_blue_green_big);
         }
     }
+    public void updateProfileImageRegistration(NetworkHelper.NetworkCallback callback){
 
+        ImageUploadTask imageUploadTask = new ImageUploadTask(bitmap, callback);
+        imageUploadTask.setAuthRequired(true);
+        imageUploadTask.execute(PROFILE_IMAGE_URL);
+
+    }
     public static RequestQueue getRequestMQueue() {
         return ProfileImageDescriptionActivity.mQueue;
     }
 
+
+    /*@OnClick (R.id.btnSubmit)
+    void clickbtnSubmit(){
+
+        updateProfileImageRegistration(new NetworkHelper.NetworkCallback() {
+            @Override
+            public void finish(JSONObject object) {
+                Log.d("FINISH RESPONSE", object.toString());
+                if(!object.optString("profile_image").isEmpty()){
+                }
+//                topPic.setImageURI(Uri.parse(userData.getImageUri()));
+            }
+
+            @Override
+            public void error(String error_code, String errorMessage) {
+                Log.d("ERROR RESPONSE", errorMessage);
+                if(!errorMessage.isEmpty()){
+                }
+            }
+        });
+    }*/
     @OnClick(R.id.btnSubmit)
     void clickSubmit(){
 
@@ -115,69 +147,6 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
         attempSendImage(jsonObject);*/
     }
 
-    private void attempSendImage(JSONObject jsonObject) {
-
-        if (mQueue == null){
-            mQueue = Volley.newRequestQueue(getApplicationContext());
-        }
-
-        try {
-            // to prevent login token to be null so the room list would not return param error
-            if (LOGINTOKEN == null) {
-                LOGINTOKEN = "";
-            }
-            jsonObject.putOpt("login_token", LOGINTOKEN);
-            jsonObject.putOpt("idfa", IDFA);
-            jsonObject.putOpt("terminal", TERMINAL_TYPE);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Log.d("JSON OBJECTS", jsonObject.toString());
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PROFILE_IMAGE_URL, jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("SUCCESS RESPONSE", response.toString());
-
-                        if (response.optString("result_code").equals("OK")){
-                            intent = new Intent(ProfileImageDescriptionActivity.this, ProfileDetailsRegistrationActivity.class);
-                            intent.putExtra("email", email);
-                            intent.putExtra("password", password);
-                            startActivity(intent);
-                        }else{
-                            new PromptDialog(ProfileImageDescriptionActivity.this)
-                                    .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
-                                    .setAnimationEnable(true)
-                                    .setTitleText(R.string.error)
-                                    .setContentText(response.optString("description"))
-                                    .setPositiveListener(R.string.ok, new PromptDialog.OnPositiveListener() {
-                                        @Override
-                                        public void onClick(PromptDialog promptDialog) {
-                                            intent = new Intent(ProfileImageDescriptionActivity.this, ProfileDetailsRegistrationActivity.class);
-                                            intent.putExtra("email", email);
-                                            intent.putExtra("password", password);
-                                            startActivity(intent);
-                                        }
-                                    }).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("ERROR RESPONSE", error.toString());
-                    }
-                });
-        jsonObjectRequest.setShouldCache(false);
-
-        DefaultRetryPolicy policy = new DefaultRetryPolicy(TIMEOUT_MILLISECONDS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        jsonObjectRequest.setRetryPolicy(policy);
-        getRequestMQueue().add(jsonObjectRequest);
-    }
 
     @OnClick(R.id.imgTopPic)
     void topPicClick(){
@@ -284,7 +253,8 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK){
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            bitmap = (Bitmap) data.getExtras().get("data");
+
             Bitmap circleBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
 
             BitmapShader shader = new BitmapShader(bitmap,  Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -301,8 +271,15 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
 
         }
         else if (requestCode == SELECT_FILE && resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
-            imgTopPic.setImageURI(selectedImage);
+            selectedImageUri = data.getData();
+            try{
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+//            imgTopPic.setImageBitmap(bitmap);
+            imgTopPic.setImageURI(selectedImageUri);
+
         }
 
         if (imgTopPic.getDrawable() != null){
@@ -310,5 +287,68 @@ public class ProfileImageDescriptionActivity extends AppCompatActivity {
             btnSubmit.setBackgroundResource(R.drawable.bg_button_blue_green_big);
         }
     }
+/*
+    private void attempSendImage(JSONObject jsonObject) {
 
+        if (mQueue == null){
+            mQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+
+        try {
+            // to prevent login token to be null so the room list would not return param error
+            if (LOGINTOKEN == null) {
+                LOGINTOKEN = "";
+            }
+            jsonObject.putOpt("login_token", LOGINTOKEN);
+            jsonObject.putOpt("idfa", IDFA);
+            jsonObject.putOpt("terminal", TERMINAL_TYPE);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("JSON OBJECTS", jsonObject.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, PROFILE_IMAGE_URL, jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("SUCCESS RESPONSE", response.toString());
+
+                        if (response.optString("result_code").equals("OK")){
+                            intent = new Intent(ProfileImageDescriptionActivity.this, ProfileDetailsRegistrationActivity.class);
+                            intent.putExtra("email", email);
+                            intent.putExtra("password", password);
+                            startActivity(intent);
+                        }else{
+                            new PromptDialog(ProfileImageDescriptionActivity.this)
+                                    .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                                    .setAnimationEnable(true)
+                                    .setTitleText(R.string.error)
+                                    .setContentText(response.optString("description"))
+                                    .setPositiveListener(R.string.ok, new PromptDialog.OnPositiveListener() {
+                                        @Override
+                                        public void onClick(PromptDialog promptDialog) {
+                                            intent = new Intent(ProfileImageDescriptionActivity.this, ProfileDetailsRegistrationActivity.class);
+                                            intent.putExtra("email", email);
+                                            intent.putExtra("password", password);
+                                            startActivity(intent);
+                                        }
+                                    }).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("ERROR RESPONSE", error.toString());
+                    }
+                });
+        jsonObjectRequest.setShouldCache(false);
+
+        DefaultRetryPolicy policy = new DefaultRetryPolicy(TIMEOUT_MILLISECONDS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        jsonObjectRequest.setRetryPolicy(policy);
+        getRequestMQueue().add(jsonObjectRequest);
+    }*/
 }
